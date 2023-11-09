@@ -4,11 +4,11 @@ namespace LichtSpiel
 {
     public class FarbenZufallsGenerator
     {
-        private Random _random;
+        private readonly Random _zufallsZahlenGenerator;
 
         public FarbenZufallsGenerator()
         {
-            _random = new Random();
+            _zufallsZahlenGenerator = new Random();
         }
 
         public Farbe GibFarbe()
@@ -16,7 +16,8 @@ namespace LichtSpiel
             int von = 1;
             int bis = 3;
 
-            int zahl = _random.Next(von, bis + 1);
+            int zahl = _zufallsZahlenGenerator.Next(von, bis + 1);
+
             Farbe farbe = (Farbe)zahl;
 
             return farbe;

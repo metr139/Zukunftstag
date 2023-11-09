@@ -21,15 +21,6 @@ namespace LichtSpiel
             _anzeige.BenutzerKnopfRot.Ausschalten();
             _anzeige.BenutzerKnopfBlau.Ausschalten();
             _anzeige.BenutzerKnopfGruen.Ausschalten();
-
-            _anzeige.KnopfRot.Background = Brushes.DarkRed;
-            _anzeige.BenutzerKnopfRot.Background = Brushes.DarkRed;
-
-            _anzeige.KnopfBlau.Background = Brushes.SteelBlue;
-            _anzeige.BenutzerKnopfBlau.Background = Brushes.SteelBlue;
-
-            _anzeige.KnopfGruen.Background = Brushes.Green;
-            _anzeige.BenutzerKnopfGruen.Background = Brushes.Green;
         }
 
         public async Task Start_Knopf_Geklickt()
@@ -67,8 +58,9 @@ namespace LichtSpiel
 
         private async Task FarbenAbspielen(Farbliste farbliste)
         {
-            foreach (Farbe farbe in farbliste)
+            for (int zaehler = 0; zaehler < farbliste.Count; zaehler++)
             {
+                Farbe farbe = farbliste[zaehler];
                 await EineFarbeAbspielen(farbe);
             }
         }
@@ -104,7 +96,7 @@ namespace LichtSpiel
             var neueFarbenListe = new Farbliste();
             var zufallsGenerator = new FarbenZufallsGenerator();
 
-            for (int i = 0; i < 3; i++)
+            for (int zaehler = 0; zaehler < 3; zaehler++)
             {
                 Farbe farbe = zufallsGenerator.GibFarbe();
 
@@ -114,20 +106,23 @@ namespace LichtSpiel
             return neueFarbenListe;
         }
 
-        public void BenutzerKnopfRot_Geklickt()
+        public async Task BenutzerKnopfRot_Geklickt()
         {
+            await _anzeige.AnimationAbspielen(_anzeige.BenutzerKnopfRot);
             _benutzerListe.Hinzufuegen(Farbe.Rot);
             BenutzerEingabeUeberpruefen();
         }
 
-        public void BenutzerKnopfBlau_Geklickt()
+        public async Task BenutzerKnopfBlau_Geklickt()
         {
+            await _anzeige.AnimationAbspielen(_anzeige.BenutzerKnopfBlau);
             _benutzerListe.Hinzufuegen(Farbe.Rot);
             BenutzerEingabeUeberpruefen();
         }
 
-        public void BenutzerKnopfGruen_Geklickt()
+        public async Task BenutzerKnopfGruen_Geklickt()
         {
+            await _anzeige.AnimationAbspielen(_anzeige.BenutzerKnopfGruen);
             _benutzerListe.Hinzufuegen(Farbe.Gruen);
             BenutzerEingabeUeberpruefen();
         }
@@ -136,9 +131,9 @@ namespace LichtSpiel
         {
             if (_benutzerListe.Laenge == _generierteListe.Laenge)
             {
-                for (int i = 0; i < _benutzerListe.Laenge; i++)
+                for (int zaehler = 0; zaehler < _benutzerListe.Laenge; zaehler++)
                 {
-                    if (_benutzerListe[i] != _generierteListe[i])
+                    if (_benutzerListe[zaehler] != _generierteListe[zaehler])
                     {
                         UngueltigeEingabe();
                         BenutzerKnoepfeAbschalten();

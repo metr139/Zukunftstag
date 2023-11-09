@@ -25,19 +25,19 @@ namespace LichtSpiel
             await _logik.Start_Knopf_Geklickt();
         }
 
-        private void BenutzerKnopfRot_Geklickt(object sender, RoutedEventArgs e)
+        private async void BenutzerKnopfRot_Geklickt(object sender, RoutedEventArgs e)
         {
-            _logik.BenutzerKnopfRot_Geklickt();
+            await _logik.BenutzerKnopfRot_Geklickt();
         }
 
-        private void BenutzerKnopfBlau_Geklickt(object sender, RoutedEventArgs e)
+        private async void BenutzerKnopfBlau_Geklickt(object sender, RoutedEventArgs e)
         {
-            _logik.BenutzerKnopfBlau_Geklickt();
+            await _logik.BenutzerKnopfBlau_Geklickt();
         }
 
-        private void BenutzerKnopfGruen_Geklickt(object sender, RoutedEventArgs e)
+        private async void BenutzerKnopfGruen_Geklickt(object sender, RoutedEventArgs e)
         {
-            _logik.BenutzerKnopfGruen_Geklickt();
+            await _logik.BenutzerKnopfGruen_Geklickt();
         }
 
         public async Task AnimationAbspielen(Button aktuellerKnopf)
